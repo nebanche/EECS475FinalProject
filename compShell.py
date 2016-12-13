@@ -12,7 +12,7 @@ def shell (initBitLen, n):
     file.write('Initial BitLen: %s \t %s trials per BitLen \n' % (initBitLen, n))
     file.write('BitLen \t CPU time used \t n \t public key \t private key\n')
 
-    while (initBitLen < 20):
+    while (True):
         for c in range (0, n):
             # gen key
             publicKey, privateKey = RSA_KeyGen.generateKey(initBitLen)
@@ -29,6 +29,7 @@ def shell (initBitLen, n):
                 # record Time to file
                 print("%s \t %s \t %s \t %s \t %s\n" % (initBitLen, timeCPU, privateKey[0], publicKey[1], privateKey[1]))
                 file.write("%s \t %s \t %s \t %s \t %s\n" % (initBitLen, timeCPU, privateKey[0], publicKey[1], privateKey[1]))
+                file.flush()
                 # record time, bitlen, and keys
             c += 1
         initBitLen += 1
