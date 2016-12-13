@@ -7,9 +7,12 @@ import attacker, rabinMiller, rsahelp, RSA_KeyGen, time
 # stops when?
 def shell (initBitLen, n):
     # init file
+    file = open('attackerRunTime.txt', 'a')
     # Append run info
+    file.write('Initial BitLen: %s \t %s trials per BitLen \n' % (initBitLen, n))
+    file.write('BitLen \t CPU time used \t n \t public key \t private key\n')
 
-    while (True):
+    while (initBitLen < 20):
         for c in range (0, n):
             # gen key
             publicKey, privateKey = RSA_KeyGen.generateKey(initBitLen)
@@ -23,11 +26,14 @@ def shell (initBitLen, n):
             if (solveKey != None and solveKey == privateKey[1]):
                 timeCPU = timeEnd - timeBegin
 
-                #record Time to file
-                print(initBitLen, timeCPU, privateKey[0], publicKey[1], privateKey[1])
+                # record Time to file
+                print("%s \t %s \t %s \t %s \t %s\n" % (initBitLen, timeCPU, privateKey[0], publicKey[1], privateKey[1]))
+                file.write("%s \t %s \t %s \t %s \t %s\n" % (initBitLen, timeCPU, privateKey[0], publicKey[1], privateKey[1]))
                 # record time, bitlen, and keys
             c += 1
-        initBitLen += 5
+        initBitLen += 1
+
+    file.close()
     return
 
 
