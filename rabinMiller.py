@@ -23,7 +23,7 @@ def rabinMiller(num):
                 else:
                     i = i + 1
                     v = (v ** 2) % num
-    return True
+    return True #probably prime 
 
 
 def isPrime(num):
@@ -65,3 +65,4 @@ def generateLargePrime(keysize=1024):
         num = random.randrange(2 ** (keysize - 1), 2 ** (keysize))
         if isPrime(num):
             return num
+#filechage
