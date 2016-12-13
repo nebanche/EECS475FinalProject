@@ -28,19 +28,18 @@ def attacker(cipherText, publicKey):
                     if (otherKey != None):
                         # also should decrypt message, compare against possible messages
                         if (possible == publicKey[1]):
-                            return True, otherKey
+                            return otherKey
                         if otherKey == publicKey[1]:
-                            return True, possible
+                            return possible
 
-    return False
+    return None
 
 
 def main():
     publicKey, privateKey = RSA_KeyGen.generateKey(5)
 
     testKey = (323, 31)
-    returnbool, foundd = attacker("teststring", publicKey)
-    print('Attacker returned %d' % (returnbool))
+    foundd = attacker("teststring", publicKey)
     print('Attacker returned private Key %d, used privateKey was %d' % (foundd, privateKey[1]))
 
     return

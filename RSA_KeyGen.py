@@ -13,21 +13,21 @@ def generateKey(keySize):
     # creates public and private key pair with keys that are keySize bits in size
     #
 
-    print('selecting prime number for p')
+    # print('selecting prime number for p')
 
     # select prime number from list for p
 
     p = rabinMiller.generateLargePrime(keySize)
-    print('p is : ', p)
+    # print('p is : ', p)
 
-    print('selecting prime number for q')
+    # print('selecting prime number for q')
 
     q = rabinMiller.generateLargePrime(keySize)
-    print('q is : ', q)
+    # print('q is : ', q)
 
     n = p * q
 
-    print('Generating e that is relatively prime to (p-1)*(q-1)')
+    # print('Generating e that is relatively prime to (p-1)*(q-1)')
 
     while True:
         e = random.randrange(2 ** (keySize - 1), 2 ** keySize)
@@ -36,15 +36,15 @@ def generateKey(keySize):
 
     # Calcuates the d, the mod inverse of e
 
-    print('Calcuating d that is mod inverse of e...')
+    # print('Calcuating d that is mod inverse of e...')
     d = rsahelp.findModInverse(e, (p - 1) * (q - 1))
 
-    print('d is : ', d)
+    # print('d is : ', d)
     publicKey = (n, e)
     privateKey = (n, d)
 
-    print('Public key:', publicKey)
-    print('Private key:', privateKey)
+    # print('Public key:', publicKey)
+    # print('Private key:', privateKey)
 
     return (publicKey, privateKey)
 
