@@ -41,7 +41,7 @@ def shell (initBitLen, n):
 def main():
     initBitLen = input('Enter an inital key bitlength.')
     n = input('Enter how many keys to run at each bitlength.')
-    shell (int(initBitLen), int(n))
+    shell(int(initBitLen), int(n))
 
     return
 
