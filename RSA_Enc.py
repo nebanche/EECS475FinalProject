@@ -3,6 +3,7 @@ import sys
 DEFAULT_BLOCK_SIZE = 128
 BYTE_SIZE = 256
 
+#RSA_Enc.py is inspired from examples in  “Hacking Secret Ciphers with Python” by Al Sweigart
 
 def main():
     filename = 'encrypted_file.txt'
@@ -76,7 +77,7 @@ def encryptMessage(message, key, blockSize=DEFAULT_BLOCK_SIZE):
 
 def decryptMessage(encryptedBlocks, messageLength, key, blockSize=DEFAULT_BLOCK_SIZE):
     # Decrypts a list of encrypted block ints into orginal message
-    # string. The original message length is required to properly decrypt
+    #The original message length is required to properly decrypt
     # the last block. Pass in private key to decrypt
 
     decryptedBlocks = []
