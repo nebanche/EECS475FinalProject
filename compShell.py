@@ -7,10 +7,10 @@ import attacker, rabinMiller, rsahelp, RSA_KeyGen, time
 # stops when?
 def shell (initBitLen, n):
     # init file
-    file = open('attackerRunTime.txt', 'a')
+    file = open('attackerRunTime_12-13.txt', 'a')
     # Append run info
     file.write('Initial BitLen: %s \t %s trials per BitLen \n' % (initBitLen, n))
-    file.write('BitLen \t CPU time used \t n \t public key \t private key\n')
+    file.write('BitLen, \t CPU time used, \t n, \t public key, \t private key,\n')
 
     while (True):
         for c in range (0, n):
@@ -27,8 +27,8 @@ def shell (initBitLen, n):
                 timeCPU = timeEnd - timeBegin
 
                 # record Time to file
-                print("%s \t %s \t %s \t %s \t %s\n" % (initBitLen, timeCPU, privateKey[0], publicKey[1], privateKey[1]))
-                file.write("%s \t %s \t %s \t %s \t %s\n" % (initBitLen, timeCPU, privateKey[0], publicKey[1], privateKey[1]))
+                print("%s, \t %s, \t %s, \t %s, \t %s,\n" % (initBitLen, timeCPU, privateKey[0], publicKey[1], privateKey[1]))
+                file.write("%s, \t %s, \t %s, \t %s, \t %s,\n" % (initBitLen, timeCPU, privateKey[0], publicKey[1], privateKey[1]))
                 file.flush()
                 # record time, bitlen, and keys
             c += 1
