@@ -20,17 +20,9 @@ def attacker(cipherText, publicKey):
         # find all possible RSA-key/sets using this factorization
             phi = (factor - 1) * ((publicKey[0] // factor) - 1)
 
-            for possible in range(0, phi):
-                # if possible is relatively prime wrt phi, see if its the publicKey
-                if relativelyPrime(possible, phi):
-
-                    otherKey = rsahelp.findModInverse(possible, phi)
-                    if (otherKey != None):
-                        # also should decrypt message, compare against possible messages
-                        if (possible == publicKey[1]):
-                            return otherKey
-                        if otherKey == publicKey[1]:
-                            return possible
+            possible = publicKey[1]
+            otherKey = rsahelp.findModInverse(possible, phi)
+            return otherKey
 
     return None
 
